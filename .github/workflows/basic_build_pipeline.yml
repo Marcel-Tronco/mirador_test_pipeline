@@ -21,7 +21,7 @@ jobs:
         node-version: '22'  # Specify the Node.js version
 
     - name: Install dependencies
-      run: npm ci
+      run: cd basic_pipeline && npm ci
 
     - name: Build project
       run: npm run webpack  # Ensure you have a build script in package.json
