@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
+    <title>My GitHub Pages Site</title>
+</head>
+<body>
+    <div id="my-mirador"/> 
+
+    <script type="text/javascript">
+        var mirador = Mirador.viewer({
+            "id": "my-mirador",
+            "manifests": {
+                "https://iiif.bodleian.ox.ac.uk/iiif/manifest/e32a277e-91e2-4a6d-8ba6-cc4bad230410.json": {
+                }
+            },
+            "windows": [
+                {
+                "loadedManifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/e32a277e-91e2-4a6d-8ba6-cc4bad230410.json",
+                "canvasIndex": 2,
+                "thumbnailNavigationPosition": 'far-bottom'
+                }
+            ]
+        });
+    </script>
+</body>
+</html>
