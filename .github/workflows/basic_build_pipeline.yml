@@ -1,0 +1,45 @@
+name: Basic build pipeline
+
+on:
+  workflow_dispatch:
+
+env:
+  SUBFOLDER: 'docs/basic_pipeline'  # Define the subfolder name here
+  BUILD_DIR: 'dist'  # Define the build output director
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '22'  # Specify the Node.js version
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build project
+      run: npm run webpack  # Ensure you have a build script in package.json
+
+    - name: Clean up old build folder
+      run: rm -rf ${{ env.SUBFOLDER }}  # Removes the existing subfolder if it exists
+
+    - name: Copy build to subfolder
+      run: |
+        mkdir -p ${{ env.SUBFOLDER }}  # Ensure the subfolder exists
+        cp -r ${{ env.BUILD_DIR }}/* ${{ env.SUBFOLDER }}/  # Copy new build files into the subfolder
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add ${{ env.SUBFOLDER }}/
+        git commit -m "Build and deploy project output to '${{ env.SUBFOLDER }}' directory"
+        git push origin HEAD:${{ github.ref_name }}  # Push to the same branch as the trigger
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
