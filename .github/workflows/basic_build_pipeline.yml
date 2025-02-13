@@ -5,7 +5,7 @@ on:
 
 env:
   SUBFOLDER: 'docs/basic_pipeline'  # Define the subfolder name here
-  BUILD_DIR: 'dist'  # Define the build output director
+  BUILD_DIR: 'basic_pipeline/dist'  # Define the build output director
 
 jobs:
   build:
@@ -21,10 +21,12 @@ jobs:
         node-version: '22'  # Specify the Node.js version
 
     - name: Install dependencies
-      run: cd basic_pipeline && npm ci
+      run: npm ci
+      working-directory: ./basic_pipeline
 
     - name: Build project
       run: npm run webpack  # Ensure you have a build script in package.json
+      working-directory: ./basic_pipeline
 
     - name: Clean up old build folder
       run: rm -rf ${{ env.SUBFOLDER }}  # Removes the existing subfolder if it exists
