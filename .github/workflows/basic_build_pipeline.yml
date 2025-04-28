@@ -39,7 +39,10 @@ jobs:
   
     - name: Copy build to subfolder
       run: |
+        mkdir -p ${{ env.SUBFOLDER }}  # Ensure the subfolder exists
+        cp basic_pipeline/index.html ${{ env.SUBFOLDER }}/index.html
         cp -r ${{ env.BUILD_DIR }}/* ${{ env.SUBFOLDER }}/  # Copy new build files into the subfolder
+        ls ${{ env.SUBFOLDER }}/
 
     - name: Commit and push changes
       run: |
