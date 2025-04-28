@@ -31,12 +31,6 @@ jobs:
     - name: Clean up old subfolder folder
       run: rm -rf ${{ env.SUBFOLDER }}  # Removes the existing subfolder if it exists
 
-    - name: Copy index.html to subfolder
-      run: |
-        mkdir -p ${{ env.SUBFOLDER }}  # Ensure the subfolder exists
-        cp index.html ${{ env.SUBFOLDER }}/
-      working-directory: ./basic_pipeline
-  
     - name: Copy build to subfolder
       run: |
         mkdir -p ${{ env.SUBFOLDER }}  # Ensure the subfolder exists
