@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -28,7 +28,7 @@ jobs:
       run: npm run webpack  # Ensure you have a build script in package.json
       working-directory: ./basic_pipeline
 
-    - name: Clean up old build folder
+    - name: Clean up old subfolder folder
       run: rm -rf ${{ env.SUBFOLDER }}  # Removes the existing subfolder if it exists
 
     - name: Copy build to subfolder
@@ -40,7 +40,6 @@ jobs:
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-        git pull
         git add ${{ env.SUBFOLDER }}/
         git commit -m "Build and deploy project output to '${{ env.SUBFOLDER }}' directory"
         git push origin HEAD:${{ github.ref_name }}  # Push to the same branch as the trigger
