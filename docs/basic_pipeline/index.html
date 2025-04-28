@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Basic Mirador</title>
+    <script src="MiradorBundle.js"></script>
+  </head>
+  <body>
+    <div id="my-mirador"/>
+    <script>
+        const { Mirador, plugins : { miradorImageToolsPlugin, textOverlayPlugin, downloadDialogPlugin  }} = MiradorBundle
+        const config = {
+            "id": "my-mirador",
+            "manifests": ['https://content.staatsbibliothek-berlin.de/dc/898144213/manifest'],
+            "window": {
+                textOverlay: {
+                  enabled: true
+                }
+            },
+            "windows": [{
+                loadedManifest: 'https://content.staatsbibliothek-berlin.de/dc/898144213/manifest',
+            }]
+        }
+
+      var mirador = Mirador.viewer(config, [ ...miradorImageToolsPlugin, ...textOverlayPlugin, ...downloadDialogPlugin ])
+    </script>
+  </body>
+</html>
