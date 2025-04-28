@@ -40,6 +40,7 @@ jobs:
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
+        git pull
         git add ${{ env.SUBFOLDER }}/
         git commit -m "Build and deploy project output to '${{ env.SUBFOLDER }}' directory"
         git push origin HEAD:${{ github.ref_name }}  # Push to the same branch as the trigger
