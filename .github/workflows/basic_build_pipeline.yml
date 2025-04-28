@@ -39,7 +39,6 @@ jobs:
   
     - name: Copy build to subfolder
       run: |
-        mkdir -p ${{ env.SUBFOLDER }}  # Ensure the subfolder exists
         cp -r ${{ env.BUILD_DIR }}/* ${{ env.SUBFOLDER }}/  # Copy new build files into the subfolder
 
     - name: Commit and push changes
