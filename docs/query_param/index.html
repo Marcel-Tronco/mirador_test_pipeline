@@ -10,23 +10,33 @@
     <div id="my-mirador"/> 
     <script type="text/javascript">
         const queryParams = new URLSearchParams(window.location.search)
-        const defaultURL = "https://iiif.bodleian.ox.ac.uk/iiif/manifest/e32a277e-91e2-4a6d-8ba6-cc4bad230410.json"
-        let manifest = queryParams.get('iiif-content') ?? ""
-        const isURL = !! URL.parse(manifest)
-        manifest = isURL ? manifest : defaultURL
+        let manifest = queryParams.get('iiif-content')
 
-        var mirador = Mirador.viewer({
-            "id": "my-mirador",
-            "manifests": {
-                [manifest]: {}
-            },
-            "windows": [
-                {
-                    "loadedManifest": manifest,
-                    "canvasIndex": 360,
-                }
-            ]
-        });
+        const isURL = !! URL.parse(manifest)
+        manifest = isURL ? manifest : null
+        const canvasIndex = Math.max(0, parseInt(queryParams.get('page') ?? 0) - 1)
+        var mirador;
+        if (manifest) {
+                mirador = Mirador.viewer({
+                "id": "my-mirador",
+                "manifests": {
+                    [manifest]: {}
+                },
+                "windows": [
+                    {
+                        "loadedManifest": manifest,
+                        canvasIndex,
+                    }
+                ]
+            });
+        }
+        else {
+            mirador = Mirador.viewer({
+                "id": "my-mirador",
+            });
+        }
+
+
     </script>
 </body>
 </html>

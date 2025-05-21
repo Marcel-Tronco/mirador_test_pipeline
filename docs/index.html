@@ -20,12 +20,13 @@
             </li>
             <li>
                 <a
-                    href="query_param/index.html?iiif-content=https://content.staatsbibliothek-berlin.de/dc/869036874/manifest"
+                    href="query_param/index.html?page=361&iiif-content=https://content.staatsbibliothek-berlin.de/dc/869036874/manifest"
                 >
                     Same same
                 </a>
-                , but using iiif-content query param to set the preloaded manifest. Which query
-                params to use is specified in the <a target="_blank" href="https://iiif.io/api/content-state/1.0/">Content State API</a> 
+                , but using iiif-content query param to set the preloaded manifest and the page param to set a page to open at the beginning.
+                There is the Content State API regulating how to encode information. But there's no implementation (for the Mirador Viewer)
+                right now.
             </li>
             <li>
                 <a href="basic_pipeline/index.html">A gh actions built viewer</a> with some plugins (text overlay, image tools, downloads).
