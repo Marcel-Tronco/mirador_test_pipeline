@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
+    <title>Mirador Viewer - Staatsbibliothek zu Berlin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src=" https://cdn.jsdelivr.net/npm/mirador@3.4.3/dist/mirador.min.js "></script>
-    <title>My GitHub Pages Site</title>
-</head>
-<body>
-    <div id="my-mirador"/> 
+  </head>
+  <body>
+    <div id="viewer"></div>
     <script type="text/javascript">
-        const queryParams = new URLSearchParams(window.location.search)
-        let manifest = queryParams.get('iiif-content')
-
-        const isURL = !! URL.parse(manifest)
-        manifest = isURL ? manifest : null
-        const canvasIndex = Math.max(0, parseInt(queryParams.get('page') ?? 0) - 1)
-        var mirador;
+        const params = new URLSearchParams(window.location.search)
+        const { manifest, page=1, view='single', language="de", sideBarPanel="info", sideBarOpen=false, showZoomControls=true, showWorkspaceControl=true } = params
+        const config = {
+            "id": "viewer",
+            "window": {
+                allowFullscreen: true,
+                views: [ { key: 'single' }, { key: 'gallery' }, { key: 'book'}],
+                defaultView: view,
+                sideBarOpen: sideBarOpen === "true",
+                sideBarPanel,
+                
+            },
+            workspace: {
+                showZoomControls: showZoomControls !== "false"
+            },
+            workspaceControlPanel: {
+                enabled: showWorkspaceControl !== "false"
+            },
+            language
+        }
         if (manifest) {
-                mirador = Mirador.viewer({
-                "id": "my-mirador",
-                "manifests": {
-                    [manifest]: {}
-                },
-                "windows": [
-                    {
-                        "loadedManifest": manifest,
-                        canvasIndex,
-                    }
-                ]
-            });
+          config.manifests = [manifest]
+          config.windows = [{
+                loadedManifest: manifest,
+                canvasIndex: Math.max(page - 1, 0),
+                maximized: true,
+            }]
         }
-        else {
-            mirador = Mirador.viewer({
-                "id": "my-mirador",
-            });
-        }
-
-
+        var mirador = Mirador.viewer(config)
     </script>
-</body>
+  </body>
 </html>

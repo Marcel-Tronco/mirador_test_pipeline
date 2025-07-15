@@ -18,15 +18,21 @@
             <li>
                 <a href="basic_viewer/index.html">A basic viewer</a> that uses just a cdn to fetch a mirador bundle and an html.
             </li>
-            <li>
+            <li> A viewer customized by
                 <a
-                    href="query_param/index.html?page=361&iiif-content=https://content.staatsbibliothek-berlin.de/dc/869036874/manifest"
+                    href="query_param/index.html?page=361&manifest=https://content.staatsbibliothek-berlin.de/dc/869036874/manifest"
                 >
-                    Same same
+                    query params
                 </a>
-                , but using iiif-content query param to set the preloaded manifest and the page param to set a page to open at the beginning.
-                There is the Content State API regulating how to encode information. But there's no implementation (for the Mirador Viewer)
-                right now.
+                . E.g.:
+                        <ul>
+                            <li> manifest - the manfifest url</li>
+                            <li> page - the page you want opened at the beginning</li>
+                            <li> view - one of the following:  single, gallery, book </li>
+                            <li> language - de ...</li>
+                            <li> showZoomControls - true </li>
+                            <li> showWorkspaceControl - true</li>
+                        </ul>
             </li>
             <li>
                 <a href="minimal_viewer/index.html">A minimal viewer</a> that can be used in situations where users shouldn't switch to many things.
@@ -36,6 +42,21 @@
             </li>
             <li>
                 <a href="basic_pipeline/index.html">A gh actions built viewer</a> with some plugins (text overlay, image tools, downloads).
+            </li>
+            <li>
+                <div> 
+                    An viewer embedded via iframe
+                </div>
+                <iframe 
+                    id="mirador-iframe"
+                    title="Mirador Viewer"
+                    sandbox="allow-scripts allow-fullscreen allow-same-origin" 
+                    allow="fullscreen; autoplay"
+                    src="showcase_viewer/index.html"
+                    style="width:calc(100%); height:calc(50vh); border: 0.5px solid #bcc0ca; border-radius: 5px;"
+                    >
+                </iframe>
+                
             </li>
         </ol>
     </div>
