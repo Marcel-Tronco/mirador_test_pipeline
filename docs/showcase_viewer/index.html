@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src=" https://cdn.jsdelivr.net/npm/mirador@3.4.3/dist/mirador.min.js "></script>
-    <title>Minimal Mirador Viewer</title>
+    <title>Showcase Viewer</title>
 </head>
 <style>
     /* Style Overrides */
@@ -71,7 +71,10 @@
                 }
             ],
             "workspace": {showZoomControls: true},
-            
+            "osdConfig": {
+                constrainDuringPan: true,
+                visibilityRatio: 0.8
+            }
         });
     </script>
 </body>
