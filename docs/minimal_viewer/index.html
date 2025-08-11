@@ -10,6 +10,42 @@
     /* Style Overrides */
     /* when showing no other buttons in the top bar, we should center the title */
     .mirador-window-top-bar h2 { margin-inline: auto; flex-grow: unset;}
+    @media (resolution > 180dpi ) {
+        #my-mirador .MuiDrawer-paper {
+            width: fit-content;
+        }
+
+        #my-mirador .MuiDrawer-paper .MuiButtonBase-root .MuiTab-wrapper {
+            width: fit-content;
+            height: fit-content;
+        }
+        #my-mirador .MuiButtonBase-root .MuiSvgIcon-root  {
+            width: 1.8em;
+            height: 1.8em;
+        }
+        /* This targets the MiradorMenuButton Element */
+        #my-mirador .mirador54 {
+            width: fit-content;
+            height: fit-content;
+        }
+
+
+        #my-mirador .MuiTypography-caption {
+            font-size: 1.1rem;
+            line-height: 1.3rem;
+            letter-spacing: 0.05em;
+        }
+
+        #my-mirador .MuiTypography-h2 {
+            font-size: 1.2rem;
+            line-height: 1.4rem;
+            letter-spacing: 0.05em;
+        }
+        #my-mirador .MuiToolbar-dense {
+            min-height: 48px;
+        }
+    }
+
 </style>
 <body>
     <div id="my-mirador"/> 
