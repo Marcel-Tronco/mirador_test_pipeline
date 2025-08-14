@@ -10,18 +10,17 @@
     /* Style Overrides */
     /* when showing no other buttons in the top bar, we should center the title */
     .mirador-window-top-bar h2 { margin-inline: auto; flex-grow: unset;}
-    @media (resolution > 180dpi ) {
+    @media (any-pointer: coarse ) {
         #my-mirador .MuiDrawer-paper {
             width: fit-content;
         }
-
         #my-mirador .MuiDrawer-paper .MuiButtonBase-root .MuiTab-wrapper {
             width: fit-content;
             height: fit-content;
         }
-        #my-mirador .mirador-canvas-nav .MuiButtonBase-root .MuiSvgIcon-root  {
-            width: min(1.8em, calc(20vw - 28px));
-            height: min(1.8em, calc(20vw - 28px));
+        #my-mirador .MuiButtonBase-root .MuiSvgIcon-root  {
+            width: max(1.2em, min(1.9em, calc(11vw)));
+            height: max(1.2em, min(1.9em, calc(11vw)));
         }
         /* This targets the MiradorMenuButton Element */
         #my-mirador .mirador54 {
@@ -58,7 +57,7 @@
             },
 
             "window": {
-                allowFullscreen: true,
+                allowFullscreen: false,
                 allowClose: false,
                 allowMaximize: false,
                 allowWindowSideBar: false,

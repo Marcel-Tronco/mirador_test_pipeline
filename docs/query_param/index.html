@@ -9,7 +9,7 @@
   <body>
     <div id="viewer"></div>
     <script type="text/javascript">
-        const params = new URLSearchParams(window.location.search)
+        const params = Object.fromEntries( (new URL(document.location.href)).searchParams.entries())
         const { manifest, page=1, view='single', language="de", sideBarPanel="info", sideBarOpen=false, showZoomControls=true, showWorkspaceControl=true } = params
         const config = {
             "id": "viewer",
